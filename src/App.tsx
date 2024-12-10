@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 import TodoList from "./componnents/TodoList";
 import TodoContext from "./context/todoContext";
 import todosReducer from "./reducers/todosReducer";
@@ -10,11 +10,6 @@ function App() {
     const localTodos = localStorage.getItem("todo-list");
     return localTodos ? JSON.parse(localTodos) : [];
   });
-
-  useEffect(() => {
-    //update localStorage
-    localStorage.setItem("todo-list", JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <TodoContext.Provider value={{ todos, dispatch }}>
